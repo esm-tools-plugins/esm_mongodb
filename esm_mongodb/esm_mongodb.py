@@ -7,11 +7,12 @@ from pymongo import MongoClient
 
 from .config import get_config
 
+
 def _fixup_dict(d):
     new = {}
-    for k, v in d.iteritems():
+    for k, v in d.items():
         if isinstance(v, dict):
-            v = print_dict(v)
+            v = _fixup_dict(v)
         if isinstance(k, str):
             new[k.replace('.', '-')] = v
         else:
