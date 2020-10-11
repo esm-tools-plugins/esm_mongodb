@@ -38,7 +38,7 @@ jobs:
       run: |
         pytest
         
-style:
+  style:
 
     runs-on: ubuntu-latest
     strategy:
