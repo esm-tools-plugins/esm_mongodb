@@ -7,6 +7,17 @@ from pymongo import MongoClient
 
 from .config import get_config
 
+def _fixup_dict(d):
+    new = {}
+    for k, v in d.iteritems():
+        if isinstance(v, dict):
+            v = print_dict(v)
+        if isinstance(k, str):
+            new[k.replace('.', '-')] = v
+        else:
+            new[k] = v
+    return new
+
 
 def register_simulation(sim_config):
     plugin_config_file = sim_config["general"].get("esm_mongodb_configfile")
@@ -31,5 +42,5 @@ def register_simulation(sim_config):
             logger.debug(database)
         collection = database[collection_name]
         logger.info("Inserting sim_config!")
-        collection.insert_one(sim_config)
+        collection.insert_one(_fixup_dict(sim_config))
     return sim_config
