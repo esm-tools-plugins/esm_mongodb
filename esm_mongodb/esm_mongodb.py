@@ -30,5 +30,6 @@ def register_simulation(sim_config):
             logger.debug(client.list_database_names())
             logger.debug(database)
         collection = database[collection_name]
+        logger.info("Inserting sim_config!")
         collection.insert_one(sim_config)
     return sim_config
