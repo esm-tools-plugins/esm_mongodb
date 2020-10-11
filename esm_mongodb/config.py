@@ -35,9 +35,9 @@ from everett.manager import ConfigManager, ConfigOSEnv
 import xdg.BaseDirectory
 
 
-
 CONFIG_FILES = [
-    directory + "/esm_tools/esm_tools.yml" for directory in xdg.BaseDirectory.xdg_config_dirs
+    directory + "/esm_tools/esm_tools.yml"
+    for directory in xdg.BaseDirectory.xdg_config_dirs
 ]
 """
 List of files where configuration information is searched for
@@ -49,22 +49,43 @@ class EsmMongoDBConfig(RequiredConfigMixin):
 
     required_config = ConfigOptions()
     required_config.add_option(
-        "use_plugin", parser=bool, default="false", doc="Use the MongoDB Plugin", namespace="esm_mongodb"
+        "use_plugin",
+        parser=bool,
+        default="false",
+        doc="Use the MongoDB Plugin",
+        namespace="esm_mongodb",
     )
     required_config.add_option(
-        "debug", parser=bool, default="false", doc="Switch debug mode on and off.", namespace="esm_mongodb",
+        "debug",
+        parser=bool,
+        default="false",
+        doc="Switch debug mode on and off.",
+        namespace="esm_mongodb",
     )
 
     required_config.add_option(
-        "hostname", parser=str, default="paleosrv3.dmawi.de", doc="Hostname for MongoDB", namespace="esm_mongodb"
+        "hostname",
+        parser=str,
+        default="paleosrv3.dmawi.de",
+        doc="Hostname for MongoDB",
+        namespace="esm_mongodb",
     )
 
     required_config.add_option(
-        "port", parser=str, default="27017", doc="Port Number for MongoDB", namespace="esm_mongodb")
+        "port",
+        parser=str,
+        default="27017",
+        doc="Port Number for MongoDB",
+        namespace="esm_mongodb",
+    )
 
     required_config.add_option(
-        "collection_name", parser=str, default=getpass.getuser(), doc="Collection Name (table) to insert into. Defaults to your username", namespace="esm_mongodb")
-
+        "collection_name",
+        parser=str,
+        default=getpass.getuser(),
+        doc="Collection Name (table) to insert into. Defaults to your username",
+        namespace="esm_mongodb",
+    )
 
 
 def get_config(config_file=None):

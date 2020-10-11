@@ -13,7 +13,13 @@ from esm_mongodb.config import get_config
 # Test requirement:
 import yaml
 
-example_config = {"esm_mongodb_use": True, "esm_mongodb_debug": True, "foo": "bar", "esm_mongodb_collection_name": "ci_tests"}
+example_config = {
+    "esm_mongodb_use": True,
+    "esm_mongodb_debug": True,
+    "foo": "bar",
+    "esm_mongodb_collection_name": "ci_tests",
+}
+
 
 class TestPluginConfig(unittest.TestCase):
     def test_get_config(self):
