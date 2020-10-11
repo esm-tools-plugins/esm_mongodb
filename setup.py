@@ -44,4 +44,5 @@ setup(
     url="https://github.com/pgierz/esm_mongodb",
     version="0.1.0",
     zip_safe=False,
+    entry_points={"esm_tools.plugins": ["esm_mongodb=esm_mongodb.esm_mongodb:register_simulation"]},
 )
