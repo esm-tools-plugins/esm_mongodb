@@ -9,13 +9,15 @@ from .config import get_config
 
 
 def register_simulation(sim_config):
-    plugin_config_file = sim_config.get("esm_mongodb_configfile")
+    plugin_config_file = sim_config["general"].get("esm_mongodb_configfile")
     plugin_config = get_config(plugin_config_file)
-    opted_in_to_db = sim_config.get("esm_mongodb_use") or plugin_config("use_plugin")
-    debug = sim_config.get("esm_mongodb_debug") or plugin_config("debug")
-    collection_name = sim_config.get("esm_mongodb_collection_name") or plugin_config(
-        "collection_name"
+    opted_in_to_db = sim_config["general"].get("esm_mongodb_use") or plugin_config(
+        "use_plugin"
     )
+    debug = sim_config["general"].get("esm_mongodb_debug") or plugin_config("debug")
+    collection_name = sim_config["general"].get(
+        "esm_mongodb_collection_name"
+    ) or plugin_config("collection_name")
     if opted_in_to_db:
         host = sim_config.get("esm_mongodb_hostname") or plugin_config("hostname")
         port = sim_config.get("esm_mongodb_port") or plugin_config("port")
