@@ -13,7 +13,7 @@ def register_simulation(sim_config):
     plugin_config = get_config(plugin_config_file)
     opted_in_to_db = sim_config.get("esm_mongodb_use") or plugin_config("use_plugin")
     debug = sim_config.get("esm_mongodb_debug") or plugin_config("debug")
-    collection_name = sim_config.get("esm_mongodb_collection_name") or plug_config(
+    collection_name = sim_config.get("esm_mongodb_collection_name") or plugin_config(
         "collection_name"
     )
     if opted_in_to_db:
