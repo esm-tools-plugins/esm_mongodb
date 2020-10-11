@@ -4,6 +4,7 @@
 
 from loguru import logger
 from pymongo import MongoClient
+import yaml
 
 from .config import get_config
 
@@ -43,5 +44,8 @@ def register_simulation(sim_config):
             logger.debug(database)
         collection = database[collection_name]
         logger.info("Inserting sim_config!")
+        with open("database_config", "w") as f:
+            f.write(yaml.safe_dump(sim_config))
+        sim_config = yaml.safe_load(f.name)
         collection.insert_one(_fixup_dict(sim_config))
     return sim_config
