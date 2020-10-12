@@ -20,7 +20,9 @@ example_config = {
         "esm_mongodb_collection_name": "ci_tests",
         "esm_mongodb_hostname": "localhost",
     },
-    "foo": "bar",
+    "some_model": {
+        "foo": "bar",
+    },
 }
 
 
@@ -45,6 +47,3 @@ class TestEsm_mongodb(unittest.TestCase):
 
     def test_insert(self):
         esm_mongodb.register_simulation(example_config)
-
-    def test_with_real_config(self):
-        pass
