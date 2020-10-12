@@ -14,10 +14,13 @@ from esm_mongodb.config import get_config
 import yaml
 
 example_config = {
-    "esm_mongodb_use": True,
-    "esm_mongodb_debug": True,
+    "general": {
+        "esm_mongodb_use": True,
+        "esm_mongodb_debug": True,
+        "esm_mongodb_collection_name": "ci_tests",
+        "esm_mongodb_hostname": "localhost",
+    },
     "foo": "bar",
-    "esm_mongodb_collection_name": "ci_tests",
 }
 
 
