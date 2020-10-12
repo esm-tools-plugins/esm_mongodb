@@ -23,7 +23,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 
-import esm_mongodb
+import esm_mongodb  # noqa
 
 # -- General configuration ---------------------------------------------
 
