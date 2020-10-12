@@ -15,7 +15,7 @@ def _fixup_dict(d):
         if isinstance(v, dict):
             v = _fixup_dict(v)
         if isinstance(k, str):
-            new[k.replace('.', '-')] = v
+            new[k.replace(".", "-")] = v
         else:
             new[k] = v
     return new
@@ -32,7 +32,9 @@ def register_simulation(sim_config):
         "esm_mongodb_collection_name"
     ) or plugin_config("collection_name")
     if opted_in_to_db:
-        host = sim_config["general"].get("esm_mongodb_hostname") or plugin_config("hostname")
+        host = sim_config["general"].get("esm_mongodb_hostname") or plugin_config(
+            "hostname"
+        )
         port = sim_config["general"].get("esm_mongodb_port") or plugin_config("port")
         if debug:
             logger.debug(f"Connect to mongodb://{host}:{port}/")
